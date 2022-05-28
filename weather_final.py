@@ -1,6 +1,6 @@
 import requests
 Key = "7ff839ceacc8354881f89c58db44f61c"
-
+#display data details
 def display_data(weather_data):
     try:
         print("Today's temp is: " + str(weather_data["list"][0]["main"]["temp"]))
@@ -10,9 +10,10 @@ def display_data(weather_data):
         print("Invalid city name or zipcode. Please try again.")
         main()
 
-
+#main
 def main():
     option = input("Please type 'city' to enter city name or type 'zip' to enter zipcode. ")
+    #city option
     if option == 'city':
         city_name = input("city name: ")
         base_url = f"https://api.openweathermap.org/data/2.5/forecast?q={city_name}&appid={Key}&units=imperial"
@@ -20,6 +21,7 @@ def main():
             weather_data = requests.get(base_url).json()
         except requests.exceptions.ConnectionError:
             print("Failed to connect to openweathermap.org")
+   #zip option
     elif option == 'zip':
         zipcode = input("enter zipcode: ")
         new_url = f"https://api.openweathermap.org/data/2.5/forecast?q={zipcode}&appid={Key}&units=imperial"
@@ -31,7 +33,7 @@ def main():
         print('Invalid entry, please type city or zip. ')
         main()
 
-
+    #try again
     display_data(weather_data)
     run_again = input("Do you want to try another location? y/n ")
     if run_again.lower() == 'y':
